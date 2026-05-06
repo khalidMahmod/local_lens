@@ -1,0 +1,35 @@
+[
+  {
+    "id": "klcc-park",
+    "name": "KLCC Park",
+    "lat": 3.1565,
+    "lng": 101.7124,
+    "area": "KLCC",
+    "type": "park",
+    "tags": ["scenic", "free", "family-friendly", "outdoor"],
+    "best_time": ["morning", "evening"],
+    "avg_time_minutes": 45
+  },
+  {
+    "id": "petaling-street",
+    "name": "Petaling Street (Chinatown)",
+    "lat": 3.1437,
+    "lng": 101.6981,
+    "area": "Petaling Street",
+    "type": "market",
+    "tags": ["heritage", "street-food", "shopping", "lively"],
+    "best_time": ["afternoon", "evening"],
+    "avg_time_minutes": 60
+  },
+  {
+    "id": "bukit-bintang",
+    "name": "Bukit Bintang",
+    "lat": 3.1466,
+    "lng": 101.7106,
+    "area": "Bukit Bintang",
+    "type": "district",
+    "tags": ["shopping", "nightlife", "street-food", "central"],
+    "best_time": ["afternoon", "evening", "night"],
+    "avg_time_minutes": 90
+  }
+]

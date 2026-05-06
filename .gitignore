@@ -1,5 +1,6 @@
 .env
-data/sessions/
+data/sessions/*
+!data/sessions/.gitkeep
 data/analytics.jsonl
 
 __pycache__/

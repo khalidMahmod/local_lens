@@ -1,0 +1,50 @@
+[
+  {
+    "id": "klcc-chill-2hr",
+    "name": "2-Hour KLCC Chill Plan",
+    "tier": "free",
+    "price_rm": null,
+    "duration_minutes": 120,
+    "location_center": { "lat": 3.1578, "lng": 101.7117, "name": "KLCC" },
+    "radius_km": 1.5,
+    "intent_tags": ["chill", "explore"],
+    "weather_tags": {
+      "ideal": ["clear", "clouds"],
+      "ok": ["drizzle"],
+      "avoid": ["rain", "thunderstorm"]
+    },
+    "indoor_percentage": 40,
+    "time_of_day": ["morning", "afternoon"],
+    "steps": [
+      {
+        "order": 1,
+        "place_name": "KLCC Park",
+        "place_location": { "lat": 3.1565, "lng": 101.7124 },
+        "duration_minutes": 45,
+        "description": "Walk through the park — head to the lake side for the best Petronas view with fewer people",
+        "insider_tip": "Enter from the Traders Hotel side, not the main Suria entrance — much quieter",
+        "google_maps_link": "https://maps.app.goo.gl/klcc-park"
+      },
+      {
+        "order": 2,
+        "place_name": "Suria KLCC — Isetan Foodhall",
+        "place_location": { "lat": 3.1578, "lng": 101.7117 },
+        "duration_minutes": 30,
+        "description": "Cool off with a drink and a quick browse through the Japanese foodhall on the lower ground floor",
+        "insider_tip": "Skip the main mall food court — the Isetan basement has better coffee and quieter seating",
+        "google_maps_link": "https://maps.app.goo.gl/suria-klcc"
+      },
+      {
+        "order": 3,
+        "place_name": "Petronas Twin Towers Skybridge View",
+        "place_location": { "lat": 3.1579, "lng": 101.7115 },
+        "duration_minutes": 45,
+        "description": "Walk back out to the park's south end at sunset — the towers light up around 7:15pm",
+        "insider_tip": "The fountain show runs every 15 minutes after dark — best photo angle is from the bench row near the playground",
+        "google_maps_link": "https://maps.app.goo.gl/klcc-fountain"
+      }
+    ],
+    "why_it_works": "Minimal walking, weather-safe with indoor options, efficient use of time",
+    "upsells": ["coffee recommendation", "dinner add-on"]
+  }
+]
