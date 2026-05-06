@@ -3,6 +3,16 @@ data/sessions/*
 !data/sessions/.gitkeep
 data/analytics.jsonl
 
+# Ingestion working surface — per-curator local state, never shared
+data/candidates.jsonl
+data/source_archive/
+
+# IG session cookies (live login — never commit)
+cookies.txt
+
+# Brainstorming visual-companion cache (per-session, not project content)
+.superpowers/
+
 __pycache__/
 *.py[cod]
 *.egg-info/
