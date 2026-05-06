@@ -46,5 +46,53 @@
     ],
     "why_it_works": "Minimal walking, weather-safe with indoor options, efficient use of time",
     "upsells": ["coffee recommendation", "dinner add-on"]
+  },
+  {
+    "id": "bukit-bintang-hidden-gems-3hr",
+    "name": "3-Hour Bukit Bintang Hidden Gems",
+    "tier": "premium",
+    "price_rm": 15,
+    "duration_minutes": 180,
+    "location_center": { "lat": 3.1466, "lng": 101.7106, "name": "Bukit Bintang" },
+    "radius_km": 1.2,
+    "intent_tags": ["explore", "food", "chill"],
+    "weather_tags": {
+      "ideal": ["clear", "clouds"],
+      "ok": ["drizzle"],
+      "avoid": ["thunderstorm"]
+    },
+    "indoor_percentage": 70,
+    "time_of_day": ["afternoon", "evening", "night"],
+    "steps": [
+      {
+        "order": 1,
+        "place_name": "Lot 10 Hutong",
+        "place_location": { "lat": 3.1466, "lng": 101.7106 },
+        "duration_minutes": 60,
+        "description": "Underground heritage hawker hall — best of KL's old-school stalls under one roof",
+        "insider_tip": "Skip the queue at the front stall; the Hokkien mee at stall #23 is the original recipe — line moves fast",
+        "google_maps_link": "https://maps.app.goo.gl/lot10-hutong"
+      },
+      {
+        "order": 2,
+        "place_name": "Concubine Lane Dessert Walk",
+        "place_location": { "lat": 3.1452, "lng": 101.7085 },
+        "duration_minutes": 45,
+        "description": "Hidden alley with old-school chendol and tau fu fa stalls — locals only, no tour buses",
+        "insider_tip": "The third stall on the left does the best chendol — gula melaka is house-made daily",
+        "google_maps_link": "https://maps.app.goo.gl/concubine-lane"
+      },
+      {
+        "order": 3,
+        "place_name": "Heli Lounge Bar",
+        "place_location": { "lat": 3.1490, "lng": 101.7100 },
+        "duration_minutes": 75,
+        "description": "Rooftop helipad-turned-bar with the best skyline view in KL — sunset slot is unbeatable",
+        "insider_tip": "Get there 30 min before sunset for a railing seat; drinks are pricey but the view is the show",
+        "google_maps_link": "https://maps.app.goo.gl/heli-lounge"
+      }
+    ],
+    "why_it_works": "Three locals-only spots in walking distance — food, sweets, sunset view — with an arc that builds to the rooftop finale",
+    "upsells": ["nightcap recommendation"]
   }
 ]
