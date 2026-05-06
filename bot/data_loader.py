@@ -58,6 +58,23 @@ def load_session(user_id: str | int, sessions_dir: Path | None = None) -> Sessio
     return Session.from_dict(raw)
 
 
+def iter_sessions(sessions_dir: Path | None = None) -> list[Session]:
+    """Read every session file in `sessions_dir`. Skips `.json.tmp` artifacts
+    left over from interrupted writes. Used by the follow-up scheduler."""
+    base = sessions_dir or SESSIONS_DIR
+    if not base.exists():
+        return []
+    sessions: list[Session] = []
+    for path in sorted(base.glob("*.json")):
+        if path.name.endswith(".json.tmp"):
+            continue
+        raw = _read_json(path)
+        if not isinstance(raw, dict):
+            continue
+        sessions.append(Session.from_dict(raw))
+    return sessions
+
+
 def save_session(session: Session, sessions_dir: Path | None = None) -> Path:
     base = sessions_dir or SESSIONS_DIR
     base.mkdir(parents=True, exist_ok=True)
