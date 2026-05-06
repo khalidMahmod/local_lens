@@ -54,7 +54,7 @@ Telegram Bot API (python-telegram-bot)
 │  - Time of day      │ - Top 1-3 hits  │ - Sesh  │
 └─────────────────────────────────────────────────┘
     ↕               ↕               ↕
-Claude API    OpenWeatherMap    Data Layer (JSON)
+OpenAI API    OpenWeatherMap    Data Layer (JSON)
 ```
 
 ### Request Flow
@@ -284,7 +284,7 @@ local_lens/
 │   ├── context_extractor.py — parse location, time, intent from input
 │   ├── package_matcher.py   — score & filter packages against context
 │   ├── conversation.py      — state machine, session management
-│   ├── claude_client.py     — Claude API wrapper, system prompt
+│   ├── llm_client.py        — OpenAI API wrapper, system prompt
 │   ├── weather.py           — OpenWeatherMap API client
 │   └── follow_up.py         — scheduled payment follow-up logic
 ├── data/
@@ -314,11 +314,11 @@ local_lens/
 ### Key Modules
 
 - **handlers.py** — routes Telegram events (/start, shared location, text, button callbacks). Thin delegation layer.
-- **context_extractor.py** — produces structured context: `{location, area, intent, time_available, weather, time_of_day}`. Uses Claude Haiku for intent extraction from vague messages (cheap, fast). Falls back to keyword matching for clear intents like button taps.
+- **context_extractor.py** — produces structured context: `{location, area, intent, time_available, weather, time_of_day}`. May use a small OpenAI model for intent extraction from vague messages (cheap, fast). Falls back to keyword matching for clear intents like button taps.
 - **package_matcher.py** — scores packages on: location proximity (haversine), duration fit, intent overlap, weather compatibility. Returns ranked candidates with confidence threshold.
 - **restaurant_picker.py** — given user location, current time, weather, and `dietary.halal_only`, returns 1–2 nearby restaurants matching the active meal window. Applies halal filter when set. Skips automatically if a suggested package already covers the current meal window.
 - **conversation.py** — manages state machine, persists to `sessions/` as JSON per user.
-- **claude_client.py** — wraps Anthropic SDK. Two model tiers: Haiku for context extraction (fast, cheap), Sonnet for user-facing responses (quality). System prompt defines personality. Receives context + matched packages, generates response. Keeps last 5 messages as history.
+- **llm_client.py** — wraps OpenAI SDK. Default model `gpt-4o-mini` for user-facing responses (cheap, fast, good enough for the bot's voice); can be overridden per call. System prompt defines personality. Receives context + matched packages, generates response. Keeps last 5 messages as history.
 - **weather.py** — fetches current weather + 3-hour forecast from OpenWeatherMap by lat/long.
 - **follow_up.py** — checks sessions for accepted packages where enough time has passed, sends follow-up. Runs on APScheduler.
 
@@ -326,7 +326,7 @@ local_lens/
 
 **Bot runtime:**
 - `python-telegram-bot` — Telegram integration
-- `anthropic` — Claude API (vision-capable for ingestion)
+- `openai` — OpenAI API (vision-capable for ingestion via GPT-4o)
 - `requests` — weather API calls
 - `APScheduler` — timed follow-ups
 
@@ -379,15 +379,15 @@ The MVP runs entirely on free-tier infrastructure. No paid hosting until product
 - Webhook HTTPS cert: free via Fly.io / Oracle (Let's Encrypt)
 - Logs / monitoring: Fly.io built-in logs free; UptimeRobot free tier for uptime checks
 
-**Environment variables:** API keys (Anthropic, Telegram, OpenWeatherMap, Apify, Airtable) loaded from `fly secrets` or `.env` (gitignored). Never committed.
+**Environment variables:** API keys (OpenAI, Telegram, OpenWeatherMap, Apify, Airtable) loaded from `fly secrets` or `.env` (gitignored). Never committed.
 
 ### Cost per Interaction (MVP)
 
-- Claude API: ~$0.01–0.03 per turn (Haiku for extraction, Sonnet for responses) — **only real cost**
+- OpenAI API: ~$0.001–0.005 per turn at gpt-4o-mini ($0.15 / $0.60 per 1M input/output tokens) — **only real cost**
 - Weather API: free (within 1,000/day)
 - Hosting: **$0** (Fly.io free tier)
 - Storage: **$0** (Airtable free + 3GB Fly volume)
-- Break-even: ~6–8 paid packages/month at RM15 average (just covers Claude API)
+- Break-even: ~1–2 paid packages/month at RM15 average (covers OpenAI API at typical volumes)
 
 **Upgrade triggers (move off free tier when):**
 - Active users exceed ~200/day (Fly free RAM gets tight)
