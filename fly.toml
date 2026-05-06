@@ -1,0 +1,29 @@
+# LocalLens — Fly.io deployment config.
+# `fly launch` will overwrite `app` and `primary_region`. The rest is
+# tuned for the free-tier shape called out in the spec (256MB VM, 3GB
+# volume, always-on so Telegram webhooks don't pay cold-start latency).
+
+app = "locallens"
+primary_region = "sin"  # Singapore — closest free region to KL
+
+[build]
+
+[env]
+  LL_MODE = "production"
+  PORT = "8080"
+
+[[mounts]]
+  source = "locallens_data"
+  destination = "/app/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  # No scale-to-zero — Telegram webhook latency tolerance is short.
+  auto_stop_machines = false
+  auto_start_machines = false
+  min_machines_running = 1
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "256mb"

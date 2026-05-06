@@ -1,0 +1,24 @@
+.git
+.gitignore
+.env
+.env.example
+.venv
+venv
+__pycache__
+*.py[cod]
+*.egg-info
+.pytest_cache
+.mypy_cache
+.ruff_cache
+.DS_Store
+
+# Don't bake user data into the image — Fly volume mount supplies it at /app/data.
+data/sessions/*
+!data/sessions/.gitkeep
+data/analytics.jsonl
+
+tests/
+docs/
+scripts/
+README.md
+requirements-dev.txt
