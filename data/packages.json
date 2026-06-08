@@ -1,98 +1,571 @@
 [
   {
-    "id": "klcc-chill-2hr",
-    "name": "2-Hour KLCC Chill Plan",
-    "tier": "free",
-    "price_rm": null,
-    "duration_minutes": 120,
-    "location_center": { "lat": 3.1578, "lng": 101.7117, "name": "KLCC" },
-    "radius_km": 1.5,
+    "id": "genting-batu-caves-daytrip",
+    "name": "Genting Highlands & Batu Caves Day Trip",
+    "tier": "premium",
+    "price_rm": 320,
+    "duration_minutes": 240,
+    "location_center": { "lat": 3.2379, "lng": 101.6840, "name": "Batu Caves" },
+    "radius_km": 2.0,
+    "intent_tags": ["explore", "chill"],
+    "weather_tags": {
+      "ideal": ["clear", "clouds"],
+      "ok": ["drizzle"],
+      "avoid": ["rain", "thunderstorm"]
+    },
+    "indoor_percentage": 20,
+    "time_of_day": ["morning", "afternoon"],
+    "audience_tags": ["family", "friends", "couples"],
+    "steps": [
+      {
+        "order": 1,
+        "place_name": "Batu Caves Main Temple",
+        "place_location": { "lat": 3.2379, "lng": 101.6840 },
+        "duration_minutes": 60,
+        "description": "Climb the 272 rainbow steps to the main cathedral cave — stunning limestone cavern with Hindu shrines inside",
+        "insider_tip": "Go before 10am to beat the crowds and heat. Watch your bags — the monkeys are bold. Wear modest clothing (sarong rental at base if needed)",
+        "google_maps_link": "https://maps.app.goo.gl/BatuCavesTemple"
+      },
+      {
+        "order": 2,
+        "place_name": "Dark Cave Tour",
+        "place_location": { "lat": 3.2382, "lng": 101.6838 },
+        "duration_minutes": 45,
+        "description": "Guided educational tour through a 2km cave system — spot rare trapdoor spiders and bat colonies",
+        "insider_tip": "Book the Adventure Tour (not just Educational) if you want to crawl through tight passages. Not suitable for very young kids though",
+        "google_maps_link": "https://maps.app.goo.gl/DarkCaveBatuCaves"
+      },
+      {
+        "order": 3,
+        "place_name": "Ramayana Cave",
+        "place_location": { "lat": 3.2375, "lng": 101.6842 },
+        "duration_minutes": 30,
+        "description": "Smaller cave at the base with beautiful painted statues depicting the Ramayana epic — much quieter than the main cave",
+        "insider_tip": "RM5 entry fee. Great for photos — the lighting on the statues is dramatic. Kids love the giant demon sculptures",
+        "google_maps_link": "https://maps.app.goo.gl/RamayanaCave"
+      },
+      {
+        "order": 4,
+        "place_name": "Nasi Lemak Wanjo (nearby Kampung Baru)",
+        "place_location": { "lat": 3.1672, "lng": 101.7005 },
+        "duration_minutes": 45,
+        "description": "Stop for an iconic KL nasi lemak lunch on the way back — fragrant coconut rice with sambal, egg, and fried chicken",
+        "insider_tip": "Order the 'Special' with rendang — it's the one locals get. Grab extra sambal packets for later",
+        "google_maps_link": "https://maps.app.goo.gl/NasiLemakWanjo"
+      }
+    ],
+    "why_it_works": "Iconic KL attraction that's easily reachable by KTM Komuter train — no transport hassle, and the caves are genuinely awe-inspiring for all ages",
+    "upsells": ["private transport add-on", "lunch recommendation"],
+    "bonus_package_id": "bonus-bukit-bintang-food-walk"
+  },
+  {
+    "id": "kl-city-daytrip-8hr",
+    "name": "Best of Kuala Lumpur Full Day",
+    "tier": "premium",
+    "price_rm": 490,
+    "duration_minutes": 480,
+    "location_center": { "lat": 3.1578, "lng": 101.7117, "name": "Kuala Lumpur City Centre" },
+    "radius_km": 5.0,
+    "intent_tags": ["explore", "food", "chill"],
+    "weather_tags": {
+      "ideal": ["clear", "clouds"],
+      "ok": ["drizzle", "rain"],
+      "avoid": ["thunderstorm"]
+    },
+    "indoor_percentage": 55,
+    "time_of_day": ["morning"],
+    "audience_tags": ["family", "friends", "couples"],
+    "steps": [
+      {
+        "order": 1,
+        "place_name": "KLCC Park & Petronas Twin Towers",
+        "place_location": { "lat": 3.1578, "lng": 101.7117 },
+        "duration_minutes": 90,
+        "description": "Start at the iconic Twin Towers — walk through KLCC Park, see the fountains, and grab photos. Book Skybridge tickets online in advance if you want to go up",
+        "insider_tip": "The park-side view from the jogging track is the best photo angle. Morning light hits the towers perfectly from the east side",
+        "google_maps_link": "https://maps.app.goo.gl/KLCCPark"
+      },
+      {
+        "order": 2,
+        "place_name": "Aquaria KLCC",
+        "place_location": { "lat": 3.1534, "lng": 101.7115 },
+        "duration_minutes": 60,
+        "description": "World-class aquarium beneath the Convention Centre — 90m underwater tunnel, touch pools for kids, and feeding shows throughout the day",
+        "insider_tip": "The piranha and shark feeding shows are at fixed times — check the board at entry. The tunnel is magical with kids",
+        "google_maps_link": "https://maps.app.goo.gl/AquariaKLCC"
+      },
+      {
+        "order": 3,
+        "place_name": "Central Market (Pasar Seni)",
+        "place_location": { "lat": 3.1457, "lng": 101.6953 },
+        "duration_minutes": 60,
+        "description": "Heritage art deco building turned cultural market — batik, pewter, local crafts, and live cultural demos",
+        "insider_tip": "The upper floor Annexe Gallery has rotating art exhibitions and a hidden café. Batik painting workshops run on weekends (RM25)",
+        "google_maps_link": "https://maps.app.goo.gl/CentralMarketKL"
+      },
+      {
+        "order": 4,
+        "place_name": "Jalan Petaling (Chinatown)",
+        "place_location": { "lat": 3.1435, "lng": 101.6968 },
+        "duration_minutes": 60,
+        "description": "Buzzing covered street market — bargain-hunt through the stalls, then grab fresh fruit juice and popiah from the hawker corners",
+        "insider_tip": "Kim Lian Kee at the corner does the original KL Hokkien mee — charcoal-fried with dark soy. Queue is worth it",
+        "google_maps_link": "https://maps.app.goo.gl/JalanPetaling"
+      },
+      {
+        "order": 5,
+        "place_name": "Islamic Arts Museum Malaysia",
+        "place_location": { "lat": 3.1425, "lng": 101.6869 },
+        "duration_minutes": 60,
+        "description": "Stunning museum with intricate Islamic architecture models, Quran manuscripts, and Ottoman-era exhibits — beautifully air-conditioned",
+        "insider_tip": "The scale model of Masjid al-Haram is jaw-dropping. The museum restaurant serves excellent Middle Eastern food with a garden view",
+        "google_maps_link": "https://maps.app.goo.gl/IslamicArtsMuseumKL"
+      },
+      {
+        "order": 6,
+        "place_name": "Jalan Alor Food Street",
+        "place_location": { "lat": 3.1458, "lng": 101.7094 },
+        "duration_minutes": 90,
+        "description": "End the day at KL's most famous food street — grilled chicken wings, satay, fried kuey teow, and fresh coconut under the neon lights",
+        "insider_tip": "Wong Ah Wah wings are the legend but the queue is long — the stall two doors down (Restoran Maju) does equally good wings with less wait. Go after 6pm when all stalls are open",
+        "google_maps_link": "https://maps.app.goo.gl/JalanAlor"
+      }
+    ],
+    "why_it_works": "Hits every KL must-see in one efficient loop — landmarks, culture, shopping, and street food — with enough indoor stops to dodge afternoon rain",
+    "upsells": ["private transport between stops", "evening skybar upgrade"],
+    "bonus_package_id": "bonus-kl-heritage-walk"
+  },
+  {
+    "id": "genting-highlands-daytrip",
+    "name": "Genting Highlands Day Trip",
+    "tier": "premium",
+    "price_rm": 320,
+    "duration_minutes": 600,
+    "location_center": { "lat": 3.4236, "lng": 101.7930, "name": "Genting Highlands" },
+    "radius_km": 5.0,
+    "intent_tags": ["explore", "chill", "surprise"],
+    "weather_tags": {
+      "ideal": ["clear", "clouds"],
+      "ok": ["drizzle", "rain"],
+      "avoid": ["thunderstorm"]
+    },
+    "indoor_percentage": 60,
+    "time_of_day": ["morning"],
+    "audience_tags": ["family", "friends"],
+    "steps": [
+      {
+        "order": 1,
+        "place_name": "Awana SkyWay Cable Car",
+        "place_location": { "lat": 3.3881, "lng": 101.7672 },
+        "duration_minutes": 30,
+        "description": "10-minute glass-floor gondola ride up the mountain through misty rainforest canopy — the views are spectacular on clear mornings",
+        "insider_tip": "Take the first car at 8am to avoid the queue. Sit on the left side going up for the best valley view. Temperature drops 10°C at the top — bring a light jacket",
+        "google_maps_link": "https://maps.app.goo.gl/AwanaSkyWay"
+      },
+      {
+        "order": 2,
+        "place_name": "Chin Swee Caves Temple",
+        "place_location": { "lat": 3.3967, "lng": 101.7733 },
+        "duration_minutes": 60,
+        "description": "Majestic Buddhist temple perched on a cliff edge with misty mountain backdrop — multi-level with statues, gardens, and a nine-storey pagoda",
+        "insider_tip": "Get off at the mid-station (not the top) — most tourists skip this and go straight to the casino. Walk down to the lower temple for the best mist-shrouded photo of the giant Buddha",
+        "google_maps_link": "https://maps.app.goo.gl/ChinSweeTemple"
+      },
+      {
+        "order": 3,
+        "place_name": "Skytropolis Indoor Theme Park",
+        "place_location": { "lat": 3.4236, "lng": 101.7930 },
+        "duration_minutes": 150,
+        "description": "Massive indoor theme park at the summit — rides for all ages, from gentle teacups for toddlers to the Terraform Tower drop for thrill seekers",
+        "insider_tip": "Buy the unlimited ride wristband (RM75) — individual rides add up fast. The VR rollercoaster and bumper cars are the best value. Food inside is overpriced — eat before or after",
+        "google_maps_link": "https://maps.app.goo.gl/Skytropolis"
+      },
+      {
+        "order": 4,
+        "place_name": "Genting Premium Outlets",
+        "place_location": { "lat": 3.3749, "lng": 101.7653 },
+        "duration_minutes": 90,
+        "description": "Open-air outlet mall on the mountain slope with international brands at 30-70% off — pleasant cool weather makes browsing comfortable",
+        "insider_tip": "The Coach and Nike stores have the best deals. The food court here is surprisingly good and way cheaper than summit restaurants — try the Penang laksa stall",
+        "google_maps_link": "https://maps.app.goo.gl/GentingPremiumOutlets"
+      }
+    ],
+    "why_it_works": "Escape the KL heat with a mountain day out — cable car, temple, theme park, and shopping in cool 20°C weather. Great for families and groups who want variety without multiple transport changes",
+    "upsells": ["private transport from hotel", "overnight stay upgrade"],
+    "bonus_package_id": "bonus-bukit-bintang-food-walk"
+  },
+  {
+    "id": "port-dickson-daytrip-private",
+    "name": "Port Dickson Beach Day — Private Transport",
+    "tier": "premium",
+    "price_rm": 780,
+    "duration_minutes": 600,
+    "location_center": { "lat": 2.5220, "lng": 101.7960, "name": "Port Dickson" },
+    "radius_km": 15.0,
     "intent_tags": ["chill", "explore"],
     "weather_tags": {
       "ideal": ["clear", "clouds"],
       "ok": ["drizzle"],
       "avoid": ["rain", "thunderstorm"]
     },
-    "indoor_percentage": 40,
-    "time_of_day": ["morning", "afternoon"],
+    "indoor_percentage": 20,
+    "time_of_day": ["morning"],
+    "audience_tags": ["family", "couples"],
     "steps": [
       {
         "order": 1,
-        "place_name": "KLCC Park",
-        "place_location": { "lat": 3.1565, "lng": 101.7124 },
-        "duration_minutes": 45,
-        "description": "Walk through the park — head to the lake side for the best Petronas view with fewer people",
-        "insider_tip": "Enter from the Traders Hotel side, not the main Suria entrance — much quieter",
-        "google_maps_link": "https://maps.app.goo.gl/klcc-park"
+        "place_name": "Hotel Pickup — KL",
+        "place_location": { "lat": 3.1578, "lng": 101.7117 },
+        "duration_minutes": 90,
+        "description": "Private car picks you up from your hotel lobby. 90-minute scenic drive south through palm oil estates to the coast",
+        "insider_tip": "Driver will confirm pickup time the night before via WhatsApp. Morning departure (8am) is ideal — you'll arrive before the beach fills up",
+        "google_maps_link": "https://maps.app.goo.gl/KLCC"
       },
       {
         "order": 2,
-        "place_name": "Suria KLCC — Isetan Foodhall",
-        "place_location": { "lat": 3.1578, "lng": 101.7117 },
-        "duration_minutes": 30,
-        "description": "Cool off with a drink and a quick browse through the Japanese foodhall on the lower ground floor",
-        "insider_tip": "Skip the main mall food court — the Isetan basement has better coffee and quieter seating",
-        "google_maps_link": "https://maps.app.goo.gl/suria-klcc"
+        "place_name": "Blue Lagoon Beach (Pantai Teluk Kemang)",
+        "place_location": { "lat": 2.4530, "lng": 101.8540 },
+        "duration_minutes": 120,
+        "description": "The cleanest public beach in PD — calm shallow water perfect for kids, with beach chairs and coconut water vendors along the stretch",
+        "insider_tip": "Walk 200m left from the main entrance to the quieter section with shade trees. Water sports vendors here are cheaper than the resort beaches. Bring sunscreen — there's almost no shade on the main strip",
+        "google_maps_link": "https://maps.app.goo.gl/BlueLagoonPD"
       },
       {
         "order": 3,
-        "place_name": "Petronas Twin Towers Skybridge View",
-        "place_location": { "lat": 3.1579, "lng": 101.7115 },
-        "duration_minutes": 45,
-        "description": "Walk back out to the park's south end at sunset — the towers light up around 7:15pm",
-        "insider_tip": "The fountain show runs every 15 minutes after dark — best photo angle is from the bench row near the playground",
-        "google_maps_link": "https://maps.app.goo.gl/klcc-fountain"
+        "place_name": "Cape Rachado Lighthouse (Tanjung Tuan)",
+        "place_location": { "lat": 2.4102, "lng": 101.8530 },
+        "duration_minutes": 60,
+        "description": "16th-century Portuguese lighthouse on a forested headland — short jungle trail to the top with panoramic Straits of Malacca views",
+        "insider_tip": "The 20-minute trail is shaded but bring water. If you're lucky you'll spot monitor lizards and hornbills. The rocky beach below the lighthouse is great for tide pooling with kids",
+        "google_maps_link": "https://maps.app.goo.gl/CapeRachado"
+      },
+      {
+        "order": 4,
+        "place_name": "Restoran Hai Yew Heng (Seafood)",
+        "place_location": { "lat": 2.5180, "lng": 101.7990 },
+        "duration_minutes": 60,
+        "description": "Local favourite seafood restaurant — butter prawns, chilli crab, and salted egg squid with a sea breeze",
+        "insider_tip": "Order the butter prawns (cereal style) and the steamed siakap (sea bass) with ginger — they're famous for both. Lunch crowd thins out after 1:30pm",
+        "google_maps_link": "https://maps.app.goo.gl/HaiYewHeng"
+      },
+      {
+        "order": 5,
+        "place_name": "Hotel Drop-off — KL",
+        "place_location": { "lat": 3.1578, "lng": 101.7117 },
+        "duration_minutes": 90,
+        "description": "Private car drives you back to your hotel — relax in air-con comfort after a full beach day",
+        "insider_tip": "Ask the driver to stop at the PD fruit stalls on the highway exit for fresh mangosteen and rambutan in season (May-Aug)",
+        "google_maps_link": "https://maps.app.goo.gl/KLCC"
       }
     ],
-    "why_it_works": "Minimal walking, weather-safe with indoor options, efficient use of time",
-    "upsells": ["coffee recommendation", "dinner add-on"]
+    "why_it_works": "Beach getaway without the hassle of renting a car or navigating — door-to-door private transport lets you just enjoy the day. Perfect for families who want sand and sea without the stress",
+    "upsells": ["jet ski rental", "sunset extension"],
+    "inclusions": ["Private return transport (hotel pickup & drop-off)", "2x complimentary lunch sets"],
+    "bonus_package_id": "bonus-bukit-bintang-food-walk"
   },
   {
-    "id": "bukit-bintang-hidden-gems-3hr",
-    "name": "3-Hour Bukit Bintang Hidden Gems",
+    "id": "melaka-daytrip-private",
+    "name": "Melaka Heritage Day Trip — Private Transport",
     "tier": "premium",
-    "price_rm": 15,
-    "duration_minutes": 180,
-    "location_center": { "lat": 3.1466, "lng": 101.7106, "name": "Bukit Bintang" },
-    "radius_km": 1.2,
+    "price_rm": 780,
+    "duration_minutes": 600,
+    "location_center": { "lat": 2.1896, "lng": 102.2501, "name": "Melaka City" },
+    "radius_km": 3.0,
     "intent_tags": ["explore", "food", "chill"],
     "weather_tags": {
       "ideal": ["clear", "clouds"],
-      "ok": ["drizzle"],
+      "ok": ["drizzle", "rain"],
       "avoid": ["thunderstorm"]
     },
-    "indoor_percentage": 70,
+    "indoor_percentage": 50,
+    "time_of_day": ["morning"],
+    "audience_tags": ["family", "friends", "couples"],
+    "steps": [
+      {
+        "order": 1,
+        "place_name": "Hotel Pickup — KL",
+        "place_location": { "lat": 3.1578, "lng": 101.7117 },
+        "duration_minutes": 120,
+        "description": "Private car picks you up from your hotel. 2-hour drive south along the expressway to the UNESCO heritage city",
+        "insider_tip": "8am pickup recommended — you'll arrive in time for a late breakfast in Melaka before the midday heat. Driver will share local history along the way",
+        "google_maps_link": "https://maps.app.goo.gl/KLCC"
+      },
+      {
+        "order": 2,
+        "place_name": "A Famosa & St. Paul's Hill",
+        "place_location": { "lat": 2.1933, "lng": 102.2490 },
+        "duration_minutes": 45,
+        "description": "Explore the 16th-century Portuguese fortress ruins and climb St. Paul's Hill for panoramic views of the old city and Straits of Malacca",
+        "insider_tip": "The climb is short but steep — go in the morning before it gets hot. The old Dutch tombstones inside the roofless church are hauntingly beautiful",
+        "google_maps_link": "https://maps.app.goo.gl/AFamosaMelaka"
+      },
+      {
+        "order": 3,
+        "place_name": "Jonker Street",
+        "place_location": { "lat": 2.1960, "lng": 102.2480 },
+        "duration_minutes": 90,
+        "description": "The heart of Melaka — antique shops, Peranakan heritage houses, and street food on every corner. Try the coconut shake, cendol, and pineapple tarts",
+        "insider_tip": "Kocik Kitchen does the best laksa on the street. The famous Jonker Walk night market is Fri-Sun only, but the daytime shops are open daily and less claustrophobic",
+        "google_maps_link": "https://maps.app.goo.gl/JonkerStreet"
+      },
+      {
+        "order": 4,
+        "place_name": "Melaka River Cruise",
+        "place_location": { "lat": 2.1950, "lng": 102.2460 },
+        "duration_minutes": 45,
+        "description": "Relaxing 45-minute boat ride along the Melaka River — colonial-era warehouses, vibrant street art murals, and overhanging trees line both banks",
+        "insider_tip": "Sit on the right side going upstream for the best murals. The late afternoon slot catches golden light on the buildings — gorgeous for photos",
+        "google_maps_link": "https://maps.app.goo.gl/MelakaRiverCruise"
+      },
+      {
+        "order": 5,
+        "place_name": "Hoe Kee Chicken Rice Ball",
+        "place_location": { "lat": 2.1962, "lng": 102.2475 },
+        "duration_minutes": 45,
+        "description": "Melaka's signature dish — tender poached chicken with hand-rolled rice balls and roasted pork. A must-eat that you literally cannot get anywhere else",
+        "insider_tip": "Hoe Kee is the local pick over the more touristy Chung Wah next door. Go before 12:30pm or after 2pm to skip the lunch rush. Order the roast pork add-on",
+        "google_maps_link": "https://maps.app.goo.gl/HoeKeeChickenRice"
+      },
+      {
+        "order": 6,
+        "place_name": "Melaka Straits Mosque",
+        "place_location": { "lat": 2.1842, "lng": 102.2380 },
+        "duration_minutes": 30,
+        "description": "Stunning mosque built on stilts over the sea — at high tide it appears to float on water. One of Malaysia's most photogenic buildings",
+        "insider_tip": "Sunset is the magic hour — the mosque glows against the orange sky. Free entry; modest dress required (robes available). Best photo angle is from the walkway on the right side",
+        "google_maps_link": "https://maps.app.goo.gl/MelakaStraitsMosque"
+      },
+      {
+        "order": 7,
+        "place_name": "Hotel Drop-off — KL",
+        "place_location": { "lat": 3.1578, "lng": 101.7117 },
+        "duration_minutes": 120,
+        "description": "Private car drives you back to KL — arrive by evening, full and happy",
+        "insider_tip": "Ask the driver to stop at the Ayer Keroh rest stop — it has the best highway food court in Malaysia and a popular dodol (toffee) shop for souvenirs",
+        "google_maps_link": "https://maps.app.goo.gl/KLCC"
+      }
+    ],
+    "why_it_works": "UNESCO World Heritage city with Portuguese, Dutch, and Peranakan layers of history — plus some of the best food in Malaysia. Private transport means no bus schedules or navigation stress",
+    "upsells": ["trishaw ride add-on", "overnight stay upgrade"],
+    "bonus_package_id": "bonus-kl-heritage-walk"
+  },
+  {
+    "id": "ipoh-2d1n-premium",
+    "name": "Ipoh 2 Day 1 Night Premium Trip",
+    "tier": "premium",
+    "price_rm": 1690,
+    "duration_minutes": 1440,
+    "location_center": { "lat": 4.5975, "lng": 101.0901, "name": "Ipoh" },
+    "radius_km": 20.0,
+    "intent_tags": ["explore", "food", "chill", "surprise"],
+    "weather_tags": {
+      "ideal": ["clear", "clouds"],
+      "ok": ["drizzle", "rain"],
+      "avoid": ["thunderstorm"]
+    },
+    "indoor_percentage": 40,
+    "time_of_day": ["morning"],
+    "audience_tags": ["couples", "friends"],
+    "steps": [
+      {
+        "order": 1,
+        "place_name": "Hotel Pickup — KL to Ipoh",
+        "place_location": { "lat": 3.1578, "lng": 101.7117 },
+        "duration_minutes": 150,
+        "description": "Private car picks you up from your KL hotel. 2.5-hour drive north through dramatic limestone karst scenery as you approach Ipoh",
+        "insider_tip": "Leave by 8am to maximize your first day. The highway scenery gets stunning past Gopeng — limestone cliffs rise straight out of the jungle",
+        "google_maps_link": "https://maps.app.goo.gl/KLCC"
+      },
+      {
+        "order": 2,
+        "place_name": "Ipoh Old Town White Coffee & Heritage Walk",
+        "place_location": { "lat": 4.5946, "lng": 101.0773 },
+        "duration_minutes": 90,
+        "description": "Start with authentic Ipoh white coffee at a heritage kopitiam, then walk the colonial-era streets — stunning murals by Ernest Zacharevic, pre-war shophouses, and the Railway Station (KL's mini-Taj Mahal)",
+        "insider_tip": "Sin Yoon Loong is the original white coffee shop — tiny, old-school, cash only. For murals, the 'Old Uncle' and 'Paper Plane' are on Jalan Panglima — arrive before 11am for shade",
+        "google_maps_link": "https://maps.app.goo.gl/IpohOldTown"
+      },
+      {
+        "order": 3,
+        "place_name": "Concubine Lane (Yi Lai Hong)",
+        "place_location": { "lat": 4.5961, "lng": 101.0770 },
+        "duration_minutes": 60,
+        "description": "Narrow alley packed with cafes, vintage shops, and Instagram-worthy murals — Ipoh's trendiest street with a fascinating backstory",
+        "insider_tip": "Try the salted caramel egg tart at Patisserie Boutique and the tau fu fah (silky tofu dessert) from the cart vendor at the lane entrance — both are unforgettable",
+        "google_maps_link": "https://maps.app.goo.gl/ConcubineLaneIpoh"
+      },
+      {
+        "order": 4,
+        "place_name": "Lou Wong Bean Sprouts Chicken",
+        "place_location": { "lat": 4.5950, "lng": 101.0765 },
+        "duration_minutes": 45,
+        "description": "Ipoh's most iconic dish — silky poached chicken with famously crunchy bean sprouts grown in local limestone-filtered water. There's nothing like it",
+        "insider_tip": "Go to Lou Wong (not Ong Kee across the road — the rivalry is real). Order extra bean sprouts and the hor fun (flat rice noodles). Queue moves fast despite looking long",
+        "google_maps_link": "https://maps.app.goo.gl/LouWongIpoh"
+      },
+      {
+        "order": 5,
+        "place_name": "Qing Xin Ling Leisure & Cultural Village",
+        "place_location": { "lat": 4.5700, "lng": 101.1200 },
+        "duration_minutes": 90,
+        "description": "Nostalgic recreation of a 1950s-70s Malaysian village — vintage cars, kampung houses, and a dreamy infinity pool overlooking limestone hills",
+        "insider_tip": "The infinity pool photo spot is the highlight — queue can be long on weekends. The trishaw ride through the village is charming. Bring mosquito repellent for the garden trails",
+        "google_maps_link": "https://maps.app.goo.gl/QingXinLing"
+      },
+      {
+        "order": 6,
+        "place_name": "Check-in & Evening at Hotel",
+        "place_location": { "lat": 4.5960, "lng": 101.0780 },
+        "duration_minutes": 120,
+        "description": "Check in to a boutique heritage hotel in old town — rest up, freshen up, then explore the evening food scene on foot",
+        "insider_tip": "M Boutique Hotel is the best value heritage stay — restored shophouse with rooftop bar overlooking the old town. Book the heritage room for original timber floors and exposed brick",
+        "google_maps_link": "https://maps.app.goo.gl/IpohOldTownHotels"
+      },
+      {
+        "order": 7,
+        "place_name": "Gua Tempurung Cave",
+        "place_location": { "lat": 4.4150, "lng": 101.1880 },
+        "duration_minutes": 120,
+        "description": "Day 2: One of Peninsular Malaysia's largest limestone caves — choose from easy walkway tours to full wet-adventure crawls through underground rivers",
+        "insider_tip": "Take Tour 3 (Golden Flowstone) if you want adventure without getting fully wet. Tour 4 is the full river wade — thrilling but exhausting. Book the 9am slot for cooler temperatures inside",
+        "google_maps_link": "https://maps.app.goo.gl/GuaTempurung"
+      },
+      {
+        "order": 8,
+        "place_name": "Lost World of Tambun",
+        "place_location": { "lat": 4.5800, "lng": 101.1560 },
+        "duration_minutes": 180,
+        "description": "Hot springs and water theme park set against a limestone cliff — natural hot spring pools, wave pool, and a petting zoo. Perfect way to unwind on Day 2",
+        "insider_tip": "The natural hot springs section at the back is way more relaxing than the main water park — fewer crowds, natural rock pools. Evening hot springs (after 6pm) with floodlit limestone cliffs is magical",
+        "google_maps_link": "https://maps.app.goo.gl/LostWorldTambun"
+      },
+      {
+        "order": 9,
+        "place_name": "Hotel Drop-off — KL",
+        "place_location": { "lat": 3.1578, "lng": 101.7117 },
+        "duration_minutes": 150,
+        "description": "Private car drives you back to KL — arrive by evening, rested and full of stories",
+        "insider_tip": "Ask the driver to stop at the Gopeng rest area for pomelo — Ipoh pomelo is the sweetest in Malaysia and makes a great edible souvenir",
+        "google_maps_link": "https://maps.app.goo.gl/KLCC"
+      }
+    ],
+    "why_it_works": "Ipoh is Malaysia's most underrated city — world-class food, stunning caves, and a heritage old town with zero tourist crowds. The 2D1N format gives you time to soak it in properly instead of rushing through a day trip",
+    "upsells": ["hotel booking assistance", "extra night extension"],
+    "inclusions": ["Private return transport (hotel pickup & drop-off)", "Complimentary breakfast"],
+    "bonus_package_id": "bonus-bukit-bintang-food-walk"
+  },
+  {
+    "id": "bonus-bukit-bintang-food-walk",
+    "name": "Bukit Bintang Food Walk",
+    "tier": "free",
+    "price_rm": null,
+    "duration_minutes": 150,
+    "location_center": { "lat": 3.1466, "lng": 101.7106, "name": "Bukit Bintang" },
+    "radius_km": 1.0,
+    "intent_tags": ["food", "chill", "explore"],
+    "weather_tags": {
+      "ideal": ["clear", "clouds"],
+      "ok": ["drizzle", "rain"],
+      "avoid": ["thunderstorm"]
+    },
+    "indoor_percentage": 60,
     "time_of_day": ["afternoon", "evening", "night"],
+    "audience_tags": ["family", "friends", "couples"],
     "steps": [
       {
         "order": 1,
         "place_name": "Lot 10 Hutong",
         "place_location": { "lat": 3.1466, "lng": 101.7106 },
-        "duration_minutes": 60,
-        "description": "Underground heritage hawker hall — best of KL's old-school stalls under one roof",
-        "insider_tip": "Skip the queue at the front stall; the Hokkien mee at stall #23 is the original recipe — line moves fast",
-        "google_maps_link": "https://maps.app.goo.gl/lot10-hutong"
+        "duration_minutes": 40,
+        "description": "Underground heritage hawker hall with KL's best old-school stalls under one air-conditioned roof — Hokkien mee, prawn mee, and chee cheong fun",
+        "insider_tip": "Skip the queue at the front stall — the Hokkien mee at stall #23 is the original recipe and the line moves faster",
+        "google_maps_link": "https://maps.app.goo.gl/Lot10Hutong"
       },
       {
         "order": 2,
-        "place_name": "Concubine Lane Dessert Walk",
-        "place_location": { "lat": 3.1452, "lng": 101.7085 },
-        "duration_minutes": 45,
-        "description": "Hidden alley with old-school chendol and tau fu fa stalls — locals only, no tour buses",
-        "insider_tip": "The third stall on the left does the best chendol — gula melaka is house-made daily",
-        "google_maps_link": "https://maps.app.goo.gl/concubine-lane"
+        "place_name": "Jalan Alor Food Street",
+        "place_location": { "lat": 3.1458, "lng": 101.7094 },
+        "duration_minutes": 50,
+        "description": "KL's most famous open-air food street — grilled chicken wings, satay, fried kuey teow, and fresh coconut under the neon lights",
+        "insider_tip": "Wong Ah Wah wings are legendary but the queue is brutal — Restoran Maju two doors down does equally good wings with half the wait. Go after 6pm when all stalls are firing",
+        "google_maps_link": "https://maps.app.goo.gl/JalanAlor"
       },
       {
         "order": 3,
-        "place_name": "Heli Lounge Bar",
-        "place_location": { "lat": 3.1490, "lng": 101.7100 },
-        "duration_minutes": 75,
-        "description": "Rooftop helipad-turned-bar with the best skyline view in KL — sunset slot is unbeatable",
-        "insider_tip": "Get there 30 min before sunset for a railing seat; drinks are pricey but the view is the show",
-        "google_maps_link": "https://maps.app.goo.gl/heli-lounge"
+        "place_name": "Tanglin Crispy Rojak (Changkat)",
+        "place_location": { "lat": 3.1470, "lng": 101.7080 },
+        "duration_minutes": 20,
+        "description": "Hidden rojak stall on Changkat — crispy fritters dipped in thick peanut sauce with shrimp paste. A locals' dessert favourite",
+        "insider_tip": "Cash only, closes when the batch runs out. The uncle has been frying here for 30+ years — ask for extra peanut sauce",
+        "google_maps_link": "https://maps.app.goo.gl/ChangkatBukitBintang"
+      },
+      {
+        "order": 4,
+        "place_name": "ICC Pudu (Pudu Market)",
+        "place_location": { "lat": 3.1390, "lng": 101.7110 },
+        "duration_minutes": 40,
+        "description": "Sprawling wet market building with a hawker floor upstairs — this is where KL locals actually eat. Char kuey teow, pan mee, and the best cendol in the city",
+        "insider_tip": "Go to the first floor — the pan mee stall with the longest queue is the one. The cendol cart near the stairs uses fresh coconut milk, not the packet stuff",
+        "google_maps_link": "https://maps.app.goo.gl/ICCPudu"
       }
     ],
-    "why_it_works": "Three locals-only spots in walking distance — food, sweets, sunset view — with an arc that builds to the rooftop finale",
-    "upsells": ["nightcap recommendation"]
+    "why_it_works": "Four iconic food stops in walking distance — from air-conditioned heritage hawkers to open-air street food to a real locals' market. You'll eat your way through the best of KL in one evening"
+  },
+  {
+    "id": "bonus-kl-heritage-walk",
+    "name": "KL Heritage Walk",
+    "tier": "free",
+    "price_rm": null,
+    "duration_minutes": 120,
+    "location_center": { "lat": 3.1480, "lng": 101.6940, "name": "Dataran Merdeka" },
+    "radius_km": 1.0,
+    "intent_tags": ["explore", "chill"],
+    "weather_tags": {
+      "ideal": ["clear", "clouds"],
+      "ok": ["drizzle"],
+      "avoid": ["rain", "thunderstorm"]
+    },
+    "indoor_percentage": 30,
+    "time_of_day": ["morning", "afternoon"],
+    "audience_tags": ["family", "friends", "couples"],
+    "steps": [
+      {
+        "order": 1,
+        "place_name": "Dataran Merdeka (Independence Square)",
+        "place_location": { "lat": 3.1480, "lng": 101.6940 },
+        "duration_minutes": 20,
+        "description": "Where Malaysian independence was declared in 1957 — the massive flagpole, the Sultan Abdul Samad Building, and the Royal Selangor Club line the green",
+        "insider_tip": "The best photo angle of the Sultan Abdul Samad Building is from the south end of the padang — you get the clock tower and both wings in frame",
+        "google_maps_link": "https://maps.app.goo.gl/DataranMerdeka"
+      },
+      {
+        "order": 2,
+        "place_name": "Masjid Jamek",
+        "place_location": { "lat": 3.1494, "lng": 101.6966 },
+        "duration_minutes": 20,
+        "description": "KL's oldest mosque at the confluence of two rivers — stunning Mughal-style architecture with onion domes and palm-lined courtyards",
+        "insider_tip": "The river confluence viewing deck behind the mosque was recently renovated — beautiful blue-lit fountains at night. Free entry; modest dress required",
+        "google_maps_link": "https://maps.app.goo.gl/MasjidJamek"
+      },
+      {
+        "order": 3,
+        "place_name": "Central Market (Pasar Seni)",
+        "place_location": { "lat": 3.1457, "lng": 101.6953 },
+        "duration_minutes": 30,
+        "description": "1888 art deco market building — batik, pewter crafts, local art, and live cultural demonstrations. Great for souvenirs",
+        "insider_tip": "The Annexe Gallery upstairs has rotating art exhibitions and a quiet café. Batik painting workshops run on weekends (RM25) — fun for families",
+        "google_maps_link": "https://maps.app.goo.gl/CentralMarketKL"
+      },
+      {
+        "order": 4,
+        "place_name": "Jalan Petaling (Chinatown)",
+        "place_location": { "lat": 3.1435, "lng": 101.6968 },
+        "duration_minutes": 50,
+        "description": "Buzzing covered street market with bargain stalls, fresh fruit juice vendors, and some of KL's oldest kopitiam and hawker stalls",
+        "insider_tip": "Kim Lian Kee at the corner does the original KL Hokkien mee — charcoal-fried with dark soy sauce. The queue is worth it. Grab fresh coconut water from the cart at the entrance",
+        "google_maps_link": "https://maps.app.goo.gl/JalanPetaling"
+      }
+    ],
+    "why_it_works": "A compact loop through KL's colonial and cultural heart — mosques, markets, and Chinatown within a 1km walk. All free attractions, easy morning stroll before your main trip"
   }
 ]

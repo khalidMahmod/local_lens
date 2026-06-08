@@ -22,6 +22,11 @@ def render_free_package(package: Package) -> str:
     lines: list[str] = [f"📍 {package.name}"]
     if package.why_it_works:
         lines.append(package.why_it_works)
+    if package.inclusions:
+        lines.append("")
+        lines.append("Included:")
+        for item in package.inclusions:
+            lines.append(f"  - {item}")
     lines.append("")
     for step in package.steps:
         lines.append(f"{step.order}. {step.place_name} ({step.duration_minutes} min)")
@@ -54,6 +59,11 @@ def render_premium_tease(package: Package) -> str:
         lines.append(
             f"{step.order}. {step.description} (~{step.duration_minutes} min)"
         )
+    if package.inclusions:
+        lines.append("")
+        lines.append("Included:")
+        for item in package.inclusions:
+            lines.append(f"  - {item}")
     lines.append("")
     if package.price_rm is not None:
         lines.append(
@@ -77,6 +87,17 @@ def render_premium_full(
         if addon:
             body = f"{body}\n\n{addon}"
     return f"{body}\n\nEnjoy! I'll check in with you in a couple of hours."
+
+
+def render_bonus_package(package: Package) -> str:
+    """Render a complimentary bonus package delivered after premium acceptance."""
+    header = (
+        "COMPLIMENTARY BONUS\n"
+        f"Your trip comes with a free {package.name} — "
+        "use it anytime during your stay!\n"
+    )
+    body = render_free_package(package)
+    return f"{header}\n{body}"
 
 
 def render_meal_addon(picks: list[Restaurant], window: str) -> str:

@@ -78,6 +78,7 @@ def _package_dict() -> dict:
         ],
         "why_it_works": "Minimal walking.",
         "upsells": ["coffee recommendation"],
+        "audience_tags": ["family", "couples"],
     }
 
 

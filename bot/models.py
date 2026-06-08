@@ -164,6 +164,9 @@ class Package:
     steps: list[PackageStep]
     why_it_works: str
     upsells: list[str]
+    audience_tags: list[str] = field(default_factory=list)
+    inclusions: list[str] = field(default_factory=list)
+    bonus_package_id: str | None = None
 
     @classmethod
     def from_dict(cls, d: dict[str, Any]) -> "Package":
@@ -192,6 +195,9 @@ class Package:
             steps=[PackageStep.from_dict(s) for s in d["steps"]],
             why_it_works=d["why_it_works"],
             upsells=list(d.get("upsells", [])),
+            audience_tags=list(d.get("audience_tags", [])),
+            inclusions=list(d.get("inclusions", [])),
+            bonus_package_id=d.get("bonus_package_id"),
         )
 
     def to_dict(self) -> dict[str, Any]:

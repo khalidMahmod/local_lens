@@ -32,6 +32,7 @@ from bot.models import Session
 from bot.package_matcher import match_packages
 from bot.payments import PaymentProvider
 from bot.renderers import (
+    render_bonus_package,
     render_free_package,
     render_meal_addon,
     render_premium_full,
@@ -320,12 +321,31 @@ async def on_premium_accept(update: Update, context: ContextTypes.DEFAULT_TYPE) 
     if query.message is not None:
         await query.message.reply_text(full_plan)
     session.history.append({"role": "assistant", "text": full_plan})
+
+    # Deliver complimentary bonus package if one is linked.
+    bonus_text = ""
+    if package.bonus_package_id:
+        bonus_pkg = next(
+            (p for p in data_loader.load_packages() if p.id == package.bonus_package_id),
+            None,
+        )
+        if bonus_pkg and query.message is not None:
+            bonus_text = render_bonus_package(bonus_pkg)
+            await query.message.reply_text(bonus_text)
+            session.history.append({"role": "assistant", "text": bonus_text})
+
     data_loader.save_session(session)
     analytics.log_event(
         "package_accepted",
         session.telegram_user_id,
         {"package_id": package.id, "commitment_price": session.commitment_price},
     )
+    if bonus_text:
+        analytics.log_event(
+            "bonus_package_delivered",
+            session.telegram_user_id,
+            {"bonus_package_id": package.bonus_package_id, "parent_package_id": package.id},
+        )
 
 
 async def on_feedback_loved(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:

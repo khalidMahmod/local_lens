@@ -51,13 +51,11 @@ def test_load_locations_returns_three_kl_locations() -> None:
         assert loc.tags
 
 
-def test_load_packages_returns_at_least_one_free_package() -> None:
+def test_load_packages_returns_valid_packages() -> None:
     packages = load_packages()
     assert len(packages) >= 1
-    free_packages = [p for p in packages if p.tier == "free"]
-    assert free_packages, "At least one free package fixture required"
 
-    pkg = free_packages[0]
+    pkg = packages[0]
     assert pkg.tier in PACKAGE_TIERS
     assert pkg.steps, "Package must have at least one step"
     assert pkg.steps[0].order == 1
