@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime, timezone
+from typing import Any
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.interval import IntervalTrigger
@@ -19,6 +20,7 @@ from telegram.ext import (
 )
 
 from config import Config, load_config
+from bot.messenger.webhook import create_messenger_app
 
 from bot import follow_up
 from bot.commands.diet import diet_command, on_diet_edit_choice
@@ -80,8 +82,36 @@ def _build_payment_provider(config: Config) -> PaymentProvider | None:
     )
 
 
+def _start_messenger_server(config: Config, telegram_bot: Any) -> None:
+    """Start the Messenger webhook server in a background thread if configured."""
+    if not config.messenger_enabled:
+        logger.info(
+            "FB_PAGE_ACCESS_TOKEN / FB_VERIFY_TOKEN not set — "
+            "Messenger integration disabled."
+        )
+        return
+    import threading
+    import uvicorn
+
+    messenger_app = create_messenger_app(
+        page_token=config.fb_page_access_token,
+        verify_token=config.fb_verify_token,
+        app_secret=config.fb_app_secret,
+        owner_telegram_id=config.owner_telegram_user_id,
+        telegram_bot=telegram_bot,
+    )
+    messenger_port = config.port + 1  # Telegram uses 8080, Messenger uses 8081.
+
+    def run() -> None:
+        uvicorn.run(messenger_app, host="0.0.0.0", port=messenger_port, log_level="info")
+
+    thread = threading.Thread(target=run, daemon=True)
+    thread.start()
+    logger.info("Messenger webhook started on 0.0.0.0:%d/messenger", messenger_port)
+
+
 async def _post_init(app: Application) -> None:
-    """Cache bot identity + start the follow-up scheduler once the loop is up."""
+    """Cache bot identity + start the follow-up scheduler + start Messenger."""
     me = await app.bot.get_me()
     app.bot_data["bot_username"] = me.username or ""
 
@@ -98,6 +128,10 @@ async def _post_init(app: Application) -> None:
     logger.info(
         "Follow-up scheduler started (every %d min).", FOLLOW_UP_INTERVAL_MINUTES
     )
+
+    # Start Messenger webhook if configured.
+    config = load_config()
+    _start_messenger_server(config, app.bot)
 
 
 async def _run_follow_up_tick(*, app: Application) -> None:

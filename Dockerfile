@@ -23,6 +23,6 @@ COPY data/ ./data/
 COPY prompts/ ./prompts/
 COPY config.py ./
 
-EXPOSE 8080
+EXPOSE 8080 8081
 
 CMD ["python", "-m", "bot.main"]
