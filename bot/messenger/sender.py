@@ -6,7 +6,7 @@ from typing import Any
 
 import httpx
 
-_GRAPH_API_URL = "https://graph.facebook.com/v21.0/me/messages"
+_GRAPH_API_URL = "https://graph.facebook.com/v25.0/me/messages"
 
 QuickReply = dict[str, str]
 
