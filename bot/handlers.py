@@ -419,6 +419,14 @@ async def on_feedback_meh(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     )
 
 
+_INTENT_PROMPTS: dict[str, str] = {
+    "food": "I'm looking for food nearby — what's good to eat right now?",
+    "chill": "I want to chill and relax — what's nearby?",
+    "explore": "I want to explore the area — what's interesting nearby?",
+    "surprise": "Surprise me — what should I do right now?",
+}
+
+
 async def on_intent_choice(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     query = update.callback_query
     if query is None or query.data is None or query.from_user is None:
@@ -436,6 +444,9 @@ async def on_intent_choice(update: Update, context: ContextTypes.DEFAULT_TYPE) -
         await query.edit_message_text("Already onboarded — just send me a message.")
         return
     data_loader.save_session(session)
-    await query.edit_message_text(
-        f"Locked in — {intent}. Tell me what you're up to and I'll suggest something."
-    )
+    await query.edit_message_text(f"Locked in — {intent}. Let me find something for you...")
+
+    # Immediately trigger a recommendation using the intent as the first message.
+    auto_text = _INTENT_PROMPTS.get(intent, f"I'm looking for {intent} — what do you suggest?")
+    if query.message is not None:
+        await _handle_chatting_message(query.message, session, auto_text)

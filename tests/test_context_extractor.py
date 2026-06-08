@@ -27,18 +27,17 @@ def _kl(year: int, month: int, day: int, hour: int, minute: int = 0) -> datetime
     [
         (7, 0, "breakfast"),
         (9, 30, "breakfast"),
-        (10, 29, "breakfast"),
-        (10, 30, "between"),     # gap between breakfast and lunch
-        (11, 0, "between"),
-        (11, 30, "lunch"),
+        (10, 30, "breakfast"),
+        (10, 59, "breakfast"),
+        (11, 0, "lunch"),
         (12, 0, "lunch"),
         (14, 29, "lunch"),
-        (14, 30, "between"),     # gap between lunch and snack
+        (14, 59, "lunch"),
         (15, 0, "afternoon_snack"),
         (16, 30, "afternoon_snack"),
-        (17, 29, "afternoon_snack"),
-        (17, 30, "between"),     # gap between snack and dinner
-        (18, 30, "dinner"),
+        (17, 30, "afternoon_snack"),
+        (17, 59, "afternoon_snack"),
+        (18, 0, "dinner"),
         (20, 0, "dinner"),
         (21, 59, "dinner"),
         (22, 0, "late_night"),
@@ -56,9 +55,9 @@ def test_time_of_day_window(hour, minute, expected):
 
 
 def test_time_of_day_window_converts_from_other_timezone():
-    # 03:00 UTC == 11:00 KL → "between" (gap)
+    # 03:00 UTC == 11:00 KL → "lunch" (seamless windows)
     utc = datetime(2026, 5, 6, 3, 0, tzinfo=timezone.utc)
-    assert time_of_day_window(utc) == "between"
+    assert time_of_day_window(utc) == "lunch"
     # 04:00 UTC == 12:00 KL → "lunch"
     utc = datetime(2026, 5, 6, 4, 0, tzinfo=timezone.utc)
     assert time_of_day_window(utc) == "lunch"

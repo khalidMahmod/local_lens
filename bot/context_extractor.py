@@ -20,12 +20,14 @@ from bot.weather import fetch_current_and_forecast
 KL_TZ = ZoneInfo("Asia/Kuala_Lumpur")
 
 # (window_name, start, end) — half-open intervals on local KL time.
+# Windows overlap slightly to eliminate dead zones where the bot would
+# return "between" and skip food recommendations entirely.
 # Late_night spans midnight, handled separately below.
 _WINDOWS: list[tuple[str, time, time]] = [
-    ("breakfast",       time(7, 0),  time(10, 30)),
-    ("lunch",           time(11, 30), time(14, 30)),
-    ("afternoon_snack", time(15, 0), time(17, 30)),
-    ("dinner",          time(18, 30), time(22, 0)),
+    ("breakfast",       time(7, 0),  time(11, 0)),
+    ("lunch",           time(11, 0), time(15, 0)),
+    ("afternoon_snack", time(15, 0), time(18, 0)),
+    ("dinner",          time(18, 0), time(22, 0)),
 ]
 _LATE_NIGHT_START = time(22, 0)
 _LATE_NIGHT_END = time(2, 0)

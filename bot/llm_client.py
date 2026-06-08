@@ -89,6 +89,7 @@ def _build_messages(
 def _format_context_block(context: Context, picks: Iterable[Restaurant]) -> str:
     lines = [
         "[CONTEXT — system-supplied, not from the user]",
+        f"User GPS: {context.lat:.4f}, {context.lng:.4f}",
         f"Area: {context.area_name}",
         f"Time-of-day window: {context.time_of_day_window}",
         f"Weather: {context.weather.condition} ({context.weather.description}), "
@@ -113,8 +114,18 @@ def _format_context_block(context: Context, picks: Iterable[Restaurant]) -> str:
     else:
         lines.append("")
         lines.append(
-            "No food spots returned for the current window — skip the meal-time "
-            "add-on for this reply."
+            "No curated food spots in this area. Use the GPS coordinates above "
+            "and your own knowledge to recommend 1–2 real, well-known restaurants "
+            "near the user's location. Only name places you are confident exist. "
+            "Include the cuisine type and approximate distance."
         )
+    lines.append("")
+    lines.append(
+        "For activity/attraction recommendations: if the user's area has no "
+        "curated packages or attractions in this message, use the GPS coordinates "
+        "and your own knowledge to suggest real, well-known things to do nearby. "
+        "Only name places you are confident exist. Prioritize proximity to the "
+        "user's current location over tourist popularity."
+    )
     lines.append("[/CONTEXT]")
     return "\n".join(lines)

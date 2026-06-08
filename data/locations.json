@@ -66,6 +66,17 @@
     "avg_time_minutes": 60
   },
   {
+    "id": "old-klang-road",
+    "name": "Old Klang Road",
+    "lat": 3.1140,
+    "lng": 101.6720,
+    "area": "Old Klang Road",
+    "type": "district",
+    "tags": ["residential", "food", "local", "halal"],
+    "best_time": ["morning", "afternoon", "evening"],
+    "avg_time_minutes": 60
+  },
+  {
     "id": "mid-valley",
     "name": "Mid Valley Megamall",
     "lat": 3.1178,

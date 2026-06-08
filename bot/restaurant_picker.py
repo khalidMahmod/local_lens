@@ -21,7 +21,7 @@ from bot.models import Context, Restaurant, Session
 
 _RAIN_CONDITIONS = frozenset({"rain", "thunderstorm", "drizzle"})
 _HALAL_OK = frozenset({"halal_certified", "muslim_friendly"})
-_DEFAULT_RADIUS_KM = 2.0
+_DEFAULT_RADIUS_KM = 5.0
 _DEFAULT_MAX_RESULTS = 2
 
 
