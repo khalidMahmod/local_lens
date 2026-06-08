@@ -49,26 +49,50 @@ class ScoredPackage:
     components: dict[str, float] = field(default_factory=dict)
 
 
+def _keyword_match(user_text: str, pkg: Package) -> bool:
+    """Return True if the user's message mentions the package destination by name."""
+    if not user_text:
+        return False
+    text_lower = user_text.lower()
+    # Check location_center name (e.g. "Melaka City", "Genting Highlands")
+    center_name = pkg.location_center.get("name", "")
+    if center_name:
+        # Match on each word of the center name (e.g. "melaka" matches "Melaka City")
+        for word in center_name.split():
+            if len(word) >= 4 and word.lower() in text_lower:
+                return True
+    # Check package name keywords
+    name_lower = pkg.name.lower()
+    for word in name_lower.split():
+        if len(word) >= 4 and word in text_lower:
+            return True
+    return False
+
+
 def match_packages(
     context: Context,
     *,
     packages: list[Package] | None = None,
     threshold: float = DEFAULT_THRESHOLD,
+    user_text: str = "",
 ) -> list[ScoredPackage]:
     if packages is None:
         packages = data_loader.load_packages()
 
     scored: list[ScoredPackage] = []
     for pkg in packages:
+        keyword_hit = _keyword_match(user_text, pkg)
         components = {
             "proximity": _proximity_score(context, pkg),
             "weather": _weather_score(context, pkg),
             "time_of_day": _time_of_day_score(context, pkg),
+            "keyword": 1.0 if keyword_hit else 0.0,
         }
-        # Hard disqualifiers — a great-weather, great-time package that is
-        # nowhere near the user is still not a match for "what should I do
-        # right now?". Same for weather-avoid.
-        if components["proximity"] <= 0.0 or _condition_in_avoid(context, pkg):
+        if keyword_hit:
+            # User explicitly asked about this destination — bypass proximity
+            # and weather-avoid checks, give a high score.
+            total = 0.9
+        elif components["proximity"] <= 0.0 or _condition_in_avoid(context, pkg):
             total = 0.0
         else:
             total = (

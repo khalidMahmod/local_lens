@@ -200,7 +200,7 @@ async def _handle_chatting_message(
         )
         return
 
-    matches = match_packages(ctx)
+    matches = match_packages(ctx, user_text=user_text)
     free_match = next(
         (m for m in matches if m.package.tier == "free"), None
     )

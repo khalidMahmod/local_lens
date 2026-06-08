@@ -17,7 +17,8 @@ from typing import Any, Iterable
 
 from openai import OpenAI
 
-from bot.models import Context, Restaurant
+from bot import data_loader
+from bot.models import Context, Package, Restaurant
 
 _DEFAULT_MODEL = "gpt-4o-mini"
 _DEFAULT_MAX_TOKENS = 1024
@@ -86,7 +87,21 @@ def _build_messages(
     return messages
 
 
+def _format_package_summary(packages: list[Package]) -> str:
+    """One-line summary per package for LLM context."""
+    lines: list[str] = []
+    for pkg in packages:
+        if pkg.tier == "free":
+            price = "FREE bonus"
+        else:
+            price = f"RM{pkg.price_rm}"
+        location = pkg.location_center.get("name", "")
+        lines.append(f"- {pkg.name} ({price}) — {location}, {pkg.duration_minutes} min")
+    return "\n".join(lines)
+
+
 def _format_context_block(context: Context, picks: Iterable[Restaurant]) -> str:
+    packages = data_loader.load_packages()
     lines = [
         "[CONTEXT — system-supplied, not from the user]",
         f"User GPS: {context.lat:.4f}, {context.lng:.4f}",
@@ -95,6 +110,15 @@ def _format_context_block(context: Context, picks: Iterable[Restaurant]) -> str:
         f"Weather: {context.weather.condition} ({context.weather.description}), "
         f"{context.weather.temp_c:.0f}°C",
     ]
+    if packages:
+        lines.append("")
+        lines.append("Available curated packages/trips we offer:")
+        lines.append(_format_package_summary(packages))
+        lines.append(
+            "When the user asks about available packages, services, places we cover, "
+            "or day trips — present these packages. For premium packages, highlight "
+            "the destination and price. Do NOT invent packages that aren't listed here."
+        )
     pick_list = list(picks)
     if pick_list:
         lines.append("")
