@@ -22,6 +22,14 @@ class Config:
     webhook_secret: str
     port: int
     mode: str
+    fb_page_access_token: str
+    fb_verify_token: str
+    fb_app_secret: str
+    owner_telegram_user_id: str
+
+    @property
+    def messenger_enabled(self) -> bool:
+        return bool(self.fb_page_access_token and self.fb_verify_token)
 
     @property
     def is_production(self) -> bool:
@@ -56,4 +64,8 @@ def load_config() -> Config:
         webhook_secret=_optional("WEBHOOK_SECRET"),
         port=int(_optional("PORT", "8080") or "8080"),
         mode=_optional("LL_MODE", "dev"),
+        fb_page_access_token=_optional("FB_PAGE_ACCESS_TOKEN"),
+        fb_verify_token=_optional("FB_VERIFY_TOKEN"),
+        fb_app_secret=_optional("FB_APP_SECRET"),
+        owner_telegram_user_id=_optional("OWNER_TELEGRAM_USER_ID"),
     )
